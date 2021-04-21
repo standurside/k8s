@@ -1,19 +1,18 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: rs-appjs
+  name: rs-nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: appjs
+      app: webui
   template:
     metadata:
+      name: nginx-pod
       labels:
-        app: appjs
+        app: webui
     spec:
       containers:
-      - name: appjs-container
-        image: smlinux/appjs
-        ports:
-        - containerPort: 8080
+      - name: nginx-container
+        image: nginx:1.14
