@@ -19,7 +19,9 @@ kind: Job
 metadata:
   name: job-example
 spec:
-  containers:
+  template:
+    spec:
+    containers:
     - name: centos-container
       image: centos:7
       command:["bash"]
