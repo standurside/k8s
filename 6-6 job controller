@@ -13,3 +13,17 @@ kubectl run testpod --image=centos7 --command sleep 5
 
 kubectl get pods --watch 
 / 
+
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: job-example
+spec:
+  containers:
+    - name: centos-container
+      image: centos:7
+      command:["bash"]
+      args:
+      - "c"
+      - "echo 'hello world'; sleep 50; echo 'bye'"
+   restartPolicy: Never
