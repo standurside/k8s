@@ -1,0 +1,15 @@
+JOB
+
+- kubernetes 는 pod 를 running 중인 상태로 유지시키는게 기본동작이다
+- batch 처리하는 pod 는 작업이 완료되면 종료됨
+- batch 처리에 적합한 컨트롤러로 pod 의 성공적인 완료를 보장
+  비정상 종료 시 다시 실행
+  정상 종료시 완료
+  
+kubectl run testpod --image=centos7 --command sleep 5
+/ 컨테이터의 어플이 종료되면 쿠버네티스는 다시 재실행 시킨다.
+/ running 중인 pod 를 보장해주는 것
+
+
+kubectl get pods --watch 
+/ 
