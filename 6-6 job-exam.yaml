@@ -3,8 +3,8 @@ kind: Job
 metadata:
   name: centos-job
 spec:
-# completions: 5 / 실행해야할 job의 수가 몇개인지 지정
-# parallelism: 2 / 병렬성, 동시 running 되는 pod 수
+# completions: 5 / 실행해야할 job의 수가 몇개인지 지정, replicas 와 비슷한 옵션으로 3개를 실행하고 종료, 동시에 running 되지는 않는다.
+# parallelism: 2 / 병렬성, 동시 running 되는 pod 수 : 2개 동시 실행되는 옵션
 # activeDeadlineSeconds: 5 / 지정시간내에 job 을 완료
   template:
     spec:
