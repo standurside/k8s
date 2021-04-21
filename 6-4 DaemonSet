@@ -7,7 +7,7 @@ kind: DaemonSet
 metadata:
   name: daemonset-nginx
 spec:
-  replicas: 3
+
   selector:
     matchLabels:
       app: webui
