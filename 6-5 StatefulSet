@@ -1,17 +1,19 @@
 //pod 의 상태를 유지해주는 컨트롤러
 - pod 이름
 - pod 의 볼륨(스토리지)
+- 특정 pod 의 핸들링이 가능하다.
 
 kubectl create -f rc-nginx.yaml
 kubectl delete pod rc-nginx.sk75v
 
 ////////////////////////////////
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: rs-nginx
+  name: sf-nginx
 spec:
   replicas: 3
+  serviceName: sf-nginx-service
   selector:
     matchLabels:
       app: webui
