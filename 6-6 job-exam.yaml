@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: centos-job
+spec:
+# completions: 5 / 실행해야할 job의 수가 몇개인지 지정
+# parallelism: 2 / 병렬성, 동시 running 되는 pod 수
+# activeDeadlineSeconds: 5 / 지정시간내에 job 을 완료
+  template:
+    spec:
+    containers:
+    - name: centos-container
+      image: centos:7
+      command:["bash"]
+      args:
+      - "c"
+      - "echo 'hello world'; sleep 50; echo 'bye'"
+   restartPolicy: Never
+ # restartPolicy: OnFailure
+ # backoffLimit: 3
