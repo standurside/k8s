@@ -1,0 +1,40 @@
+CronJob
+
+# job 컨트롤러로 실행할 application pod 를 주기적으로 반복해서 실행
+# linux 의 cronjob 의 스케쥴링 기능을 job controller 에 추가한 API 
+# 다음과 같은 반복해서 실행하는 job 을 운영해야 할때 사용
+
+- data backup
+- send email
+- cleaning tasks
+
+CronJob Schedule: "0 3 1 * *"
+
+- minutes
+- Hours
+- Day of the month
+- Month
+- Day of the week
+
+# CronJob Schedule 
+
+//////////////////////////
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob-definition
+spec:
+  schedule: "0 3 1 * *"
+  jobTemplate:
+    spec:
+  template:
+    spec:
+    containers:
+    - name: hello
+      image: busybox
+      command:["bash"]
+      args:
+      - /bin/sh
+      - -c
+      - data; echo Hello
+   restartPolicy: Never 
