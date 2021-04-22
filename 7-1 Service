@@ -2,7 +2,23 @@
 
 1. 개념과 종류
 - 쿠버네티스 네트워크가 어렵다.
- 
+
+2. 타입
+- 4Type
+
+clusterIP(default)
+  pod 그룹의 단일 진입점(virtual IP)생성
+NodePort
+  clusterIP 가 생성된 후
+  모든 work node 에 외부에서 접속가능한 포트 예약
+  
+LoadBalancer
+
+ExternalName
+
+
+
+
 Deployment-definition
 /////////////////////
 apiVersion: apps/v1
