@@ -1,0 +1,40 @@
+쿠버네티스 서비스 kubernetes service 
+
+1. 개념과 종류
+- 쿠버네티스 네트워크가 어렵다.
+ 
+Deployment-definition
+/////////////////////
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webui
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+    app: webui
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app:webui
+    spec:
+      container:
+      -name : nginx-container
+
+Service-definition
+/////////////////////
+apiVersion: v1
+kind: Service
+metadata:
+  name: webui-svc
+spec:
+  clusterIP: 10.96.100.100
+  selector:
+    app: webui
+  ports:
+  - protocols: TCP
+    port: 80
+    targerPort:80
+
