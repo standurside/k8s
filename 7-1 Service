@@ -54,3 +54,29 @@ spec:
     port: 80
     targerPort:80
 
+
+
+
+2. NodePort
+
+- 모든 노드를 대상으로 외부 접속가능한 포트를 예약
+- default NodePort 범위: 30000-32767
+- ClusterIP 를 생성후 NodePort 를 예약
+
+
+NodePort Service
+////////////////
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-service
+spec:
+  type: NodePort
+  clusterIP: 10.100.100.200
+  select:
+    app: webui
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort:30200
