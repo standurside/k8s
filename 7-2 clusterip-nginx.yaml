@@ -8,6 +8,6 @@ spec:
   selector:
     app: webui
   ports:
-  - protocols: TCP
+  - protocol: TCP
     port: 80
-    targerPort: 80
+    targetPort: 80
